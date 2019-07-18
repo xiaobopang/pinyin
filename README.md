@@ -6,7 +6,6 @@
 
 ```
 composer require xiaobopang/pinyin
-
 ```
 
 #### Example
@@ -24,17 +23,16 @@ $pinyin = new Pinyin();
 //没有声调
 $testStr = $pinyin->transformWithoutTone("你好，中国");
 
-var_dump($testStr); //string(16) "woshizhongguoren"
+var_dump($testStr); //string(13) "nihaozhongguo"
 
 //汉字首字母
 $testStr1 = $pinyin->transformUcwords("中国");
 
-var_dump($testStr1);  //string(3) "ZGR"
+var_dump($testStr1);  //string(2) "ZG"
 
 //有声调
 $testStr2 = $pinyin->transformWithTone("你好，中国");
 
-var_dump($testStr2);  //string(26) "wǒ shì zhōng guó rén "
-
+var_dump($testStr2);  //string(24) "nǐ hǎo ，zhōng guó "
     
 ```

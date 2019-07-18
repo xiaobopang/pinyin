@@ -7,7 +7,7 @@ use Xiaobopang\Pinyin\Pinyin;
 
 class PinyinTest extends PHPUnit_Framework_TestCase
 {
-    public function testLoaderSetter()
+    public function testPinyinCase()
     {
         $pinyin = new Pinyin();
 

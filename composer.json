@@ -5,7 +5,7 @@
     "require": {
         "php": "^7.1"
     },
-    "license": "Apache2.0",
+    "license": "MIT",
     "authors": [{
         "name": "pangxiaobo",
         "email": "10846295@qq.com"

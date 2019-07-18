@@ -5,7 +5,7 @@
 #### Install
 
 ```
-    composer require xiaobopang/pinyin
+composer require xiaobopang/pinyin
 
 ```
 

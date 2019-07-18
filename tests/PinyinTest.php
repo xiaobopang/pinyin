@@ -2,10 +2,10 @@
 
 namespace Xiaobopang\Pinyin\Test;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Xiaobopang\Pinyin\Pinyin;
 
-class PinyinTest extends PHPUnit_Framework_TestCase
+class PinyinTest extends TestCase
 {
     public function testPinyinCase()
     {

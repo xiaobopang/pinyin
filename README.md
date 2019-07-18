@@ -17,7 +17,7 @@
 
 require_once './vendor/autoload.php';
 
-use Xiaobopang\Pingying\Pinyin;
+use Xiaobopang\Pinyin\Pinyin;
 
 $pinyin = new Pinyin();
 

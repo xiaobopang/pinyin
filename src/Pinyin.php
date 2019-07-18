@@ -6,7 +6,7 @@
  * Modified By: the developer formerly known as Pangxiaobo at <10846295@qq.com>
  * Copyright (c) 2016 Pangxiaobo
  */
-namespace Xiaobopang\Pingying;
+namespace Xiaobopang\Pinyin;
 
 class Pinyin{
 

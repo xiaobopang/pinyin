@@ -16,7 +16,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Xiaobopang\\Pingying\\": "src/"
+            "Xiaobopang\\Pinyin\\": "src/"
         }
     }
 }

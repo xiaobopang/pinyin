@@ -84,7 +84,7 @@ class Pinyin
      * 获取英文姓名首字母
      *
      * @param [string] $name 英文名
-     * @return string 
+     * @return string
      */
     public function getFirstCharacter($name)
     {
@@ -94,5 +94,20 @@ class Pinyin
         }
         return strtoupper($newName);
     }
-    
+
+    /**
+     * 获取中文名
+     *
+     * @param [string] $name  中文名
+     * @return string
+     */
+    public function getFirstName($name)
+    {
+        if (preg_match("/^[\x{4e00}-\x{9fa5}]+$/u", "$name")) {
+            return mb_substr($name, -2, 2, 'utf-8');
+        } else {
+            return substr($name, 0, 2);
+        }
+    }
+
 }

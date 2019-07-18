@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false">
+    <testsuites>
+        <testsuite name="xiaobopang/pinyin Test Suite (All PHP version)">
+            <directory>./tests/</directory>
+            <exclude>./tests/PinyinTest.php</exclude>
+        </testsuite>
+        <testsuite name="xiaobopang/pinyin PinyinTest Test Suite (PHP >= 5.6)">
+            <file>./tests/PinyinTest.php</file>
+            <file phpVersion="7.1" phpVersionOperator=">=">./tests/PinyinTest.php</file>
+        </testsuite>
+    </testsuites>
+</phpunit>

@@ -34,5 +34,9 @@ var_dump($testStr1);  //string(2) "ZG"
 $testStr2 = $pinyin->transformWithTone("你好，中国");
 
 var_dump($testStr2);  //string(24) "nǐ hǎo ，zhōng guó "
+
+//获取英文名首字母
+$testStr3 = $pinyin->getFirstCharacter('peter pang');
+var_dump($testStr3);  //string(2) "PP"
     
 ```

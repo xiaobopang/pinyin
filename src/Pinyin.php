@@ -33,7 +33,7 @@ class Pinyin{
         $output_char = '';
         for($i=0;$i<$input_len;$i++){
             $word = mb_substr($input_char,$i,1,$this->charset);
-            if(preg_match('/^[\x{4e00}-\x{9fa5}]$/u',$word) && preg_match('/\,'.preg_quote($word).'(.*?)\,/',$this->ChineseCharacters,$matches) ){
+            if(preg_match('/^[\x{4e00}-\x{9fa5}]$/u',$word) && preg_match('/\,'.preg_quote($word).'(.*?)\,/',$this->chineseCharacters,$matches) ){
                 $output_char.=$matches[1].$delimiter;
             }else if(!$outside_ignore){
                 $output_char.=$word;

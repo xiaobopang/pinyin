@@ -22,17 +22,17 @@ use Xiaobopang\Pinyin\Pinyin;
 $pinyin = new Pinyin();
 
 //没有声调
-$testStr = $pinyin->transformWithoutTone("我是中国人");
+$testStr = $pinyin->transformWithoutTone("你好，中国");
 
 var_dump($testStr); //string(16) "woshizhongguoren"
 
 //汉字首字母
-$testStr1 = $pinyin->transformUcwords("中国人");
+$testStr1 = $pinyin->transformUcwords("中国");
 
 var_dump($testStr1);  //string(3) "ZGR"
 
 //有声调
-$testStr2 = $pinyin->transformWithTone("我是中国人");
+$testStr2 = $pinyin->transformWithTone("你好，中国");
 
 var_dump($testStr2);  //string(26) "wǒ shì zhōng guó rén "
 

@@ -1,9 +1,12 @@
 {
     "name": "xiaobopang/pinyin",
     "description": "汉字转带有声调的汉语拼音，汉字转无声调的汉语拼音，汉字转成汉语拼音首字母",
-    "type": "l",
+    "type": "library",
     "require": {
         "php": "^7.1"
+    },
+    "require-dev": {
+        "php": ">=5.4"
     },
     "license": "MIT",
     "authors": [{

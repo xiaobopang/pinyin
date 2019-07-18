@@ -17,7 +17,7 @@ class Pinyin{
 
     public function __construct(){
         if( empty($this->chineseCharacters) ){
-            $this->chineseCharacters = file_get_contents(__DIR__ . '/data/ChineseCharacters.dat');
+            $this->chineseCharacters = file_get_contents(__DIR__ . '/../data/ChineseCharacters.dat');
         }
     }
 

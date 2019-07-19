@@ -106,7 +106,8 @@ class Pinyin
         if (preg_match("/^[\x{4e00}-\x{9fa5}]+$/u", "$name")) {
             return mb_substr($name, -2, 2, 'utf-8');
         } else {
-            return substr($name, 0, 2);
+            //return substr($name, 0, 2);
+            return strtoupper($this->getFirstCharacter($name));
         }
     }
 

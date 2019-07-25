@@ -90,6 +90,7 @@ class Pinyin
     public function getFirstCharacter($name)
     {
         $newWord = explode(' ', $name);
+        $newName = '';
         foreach ($newWord as $letter) {
             $newName .= $letter{0};
         }

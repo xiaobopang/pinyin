@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Created Date: Friday December 16th 2016
  * Author: Pangxiaobo
@@ -6,11 +7,11 @@
  * Modified By: the developer formerly known as Pangxiaobo at <10846295@qq.com>
  * Copyright (c) 2016 Pangxiaobo
  */
+
 namespace Xiaobopang\Pinyin;
 
 class Pinyin
 {
-
     //utf-8中国汉字集合
     private $chineseCharacters;
     //编码
@@ -19,7 +20,7 @@ class Pinyin
     public function __construct()
     {
         if (empty($this->chineseCharacters)) {
-            $this->chineseCharacters = file_get_contents(__DIR__ . '/../data/ChineseCharacters.dat');
+            $this->chineseCharacters = file_get_contents(__DIR__.'/../data/ChineseCharacters.dat');
         }
     }
 
@@ -31,14 +32,13 @@ class Pinyin
      */
     public function transformWithTone($input_char, $delimiter = ' ', $outside_ignore = false)
     {
-
         $input_len = mb_strlen($input_char, $this->charset);
         $output_char = '';
         for ($i = 0; $i < $input_len; $i++) {
             $word = mb_substr($input_char, $i, 1, $this->charset);
-            if (preg_match('/^[\x{4e00}-\x{9fa5}]$/u', $word) && preg_match('/\,' . preg_quote($word) . '(.*?)\,/', $this->chineseCharacters, $matches)) {
-                $output_char .= $matches[1] . $delimiter;
-            } else if (!$outside_ignore) {
+            if (preg_match('/^[\x{4e00}-\x{9fa5}]$/u', $word) && preg_match('/\,'.preg_quote($word).'(.*?)\,/', $this->chineseCharacters, $matches)) {
+                $output_char .= $matches[1].$delimiter;
+            } elseif (!$outside_ignore) {
                 $output_char .= $word;
             }
         }
@@ -54,14 +54,15 @@ class Pinyin
      */
     public function transformWithoutTone($input_char, $delimiter = '', $outside_ignore = true)
     {
-
         $char_with_tone = $this->transformWithTone($input_char, $delimiter, $outside_ignore);
 
-        $char_without_tone = str_replace(array('ā', 'á', 'ǎ', 'à', 'ō', 'ó', 'ǒ', 'ò', 'ē', 'é', 'ě', 'è', 'ī', 'í', 'ǐ', 'ì', 'ū', 'ú', 'ǔ', 'ù', 'ǖ', 'ǘ', 'ǚ', 'ǜ', 'ü'),
-            array('a', 'a', 'a', 'a', 'o', 'o', 'o', 'o', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'u', 'u', 'u', 'u', 'v', 'v', 'v', 'v', 'v')
-            , $char_with_tone);
-        return $char_without_tone;
+        $char_without_tone = str_replace(
+            ['ā', 'á', 'ǎ', 'à', 'ō', 'ó', 'ǒ', 'ò', 'ē', 'é', 'ě', 'è', 'ī', 'í', 'ǐ', 'ì', 'ū', 'ú', 'ǔ', 'ù', 'ǖ', 'ǘ', 'ǚ', 'ǜ', 'ü'],
+            ['a', 'a', 'a', 'a', 'o', 'o', 'o', 'o', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'u', 'u', 'u', 'u', 'v', 'v', 'v', 'v', 'v'],
+            $char_with_tone
+        );
 
+        return $char_without_tone;
     }
 
     /*
@@ -71,15 +72,15 @@ class Pinyin
      */
     public function transformUcwords($input_char, $delimiter = '')
     {
-
         $char_without_tone = ucwords($this->transformWithoutTone($input_char, ' ', true));
         $ucwords = preg_replace('/[^A-Z]/', '', $char_without_tone);
         if (!empty($delimiter)) {
             $ucwords = implode($delimiter, str_split($ucwords));
         }
-        return $ucwords;
 
+        return $ucwords;
     }
+
     /**
      * 获取英文姓名首字母
      *
@@ -88,10 +89,11 @@ class Pinyin
      */
     public function getFirstCharacter($name)
     {
-        $newWord = explode(" ", $name);
+        $newWord = explode(' ', $name);
         foreach ($newWord as $letter) {
             $newName .= $letter{0};
         }
+
         return strtoupper($newName);
     }
 
@@ -105,10 +107,8 @@ class Pinyin
     {
         if (preg_match("/^[\x{4e00}-\x{9fa5}]+$/u", "$name")) {
             return mb_substr($name, -2, 2, 'utf-8');
-        } else {
-            //return substr($name, 0, 2);
-            return strtoupper($this->getFirstCharacter($name));
         }
+        //return substr($name, 0, 2);
+        return strtoupper($this->getFirstCharacter($name));
     }
-
 }

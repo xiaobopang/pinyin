@@ -91,12 +91,13 @@ class Pinyin
      */
     public function getFirstCharacter($name)
     {
-        $newWord = explode(' ', $name);
-        foreach ($newWord as $letter) {
-            $newName .= $letter{0};
+        $words = explode(' ', $name);
+        $letters = '';
+        foreach ($words as $word) {
+            $letters .= $word{0};
         }
 
-        return strtoupper($newName);
+        return strtoupper($letters);
     }
 
     /**

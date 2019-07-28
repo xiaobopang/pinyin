@@ -12,9 +12,10 @@ namespace Xiaobopang\Pinyin;
 
 class Pinyin
 {
-    //utf-8中国汉字集合
+    // utf-8 中国汉字集合
     private $chineseCharacters;
-    //编码
+
+    // 编码
     private $charset = 'utf-8';
 
     public function __construct()
@@ -24,11 +25,11 @@ class Pinyin
         }
     }
 
-    /*
+    /**
      * 转成带有声调的汉语拼音
-     * param $input_char String  需要转换的汉字
-     * param $delimiter  String   转换之后拼音之间分隔符
-     * param $outside_ignore  Boolean     是否忽略非汉字内容
+     * @param $input_char String  需要转换的汉字
+     * @param $delimiter  String   转换之后拼音之间分隔符
+     * @param $outside_ignore  Boolean     是否忽略非汉字内容
      */
     public function transformWithTone($input_char, $delimiter = ' ', $outside_ignore = false)
     {
@@ -36,6 +37,7 @@ class Pinyin
         $output_char = '';
         for ($i = 0; $i < $input_len; $i++) {
             $word = mb_substr($input_char, $i, 1, $this->charset);
+            $matches = [];
             if (preg_match('/^[\x{4e00}-\x{9fa5}]$/u', $word) && preg_match('/\,'.preg_quote($word).'(.*?)\,/', $this->chineseCharacters, $matches)) {
                 $output_char .= $matches[1].$delimiter;
             } elseif (!$outside_ignore) {
@@ -46,11 +48,11 @@ class Pinyin
         return $output_char;
     }
 
-    /*
+    /**
      * 转成带无声调的汉语拼音
-     * param $input_char String  需要转换的汉字
-     * param $delimiter  String   转换之后拼音之间分隔符
-     * param $outside_ignore  Boolean     是否忽略非汉字内容
+     * @param $input_char String  需要转换的汉字
+     * @param $delimiter  String   转换之后拼音之间分隔符
+     * @param $outside_ignore  Boolean     是否忽略非汉字内容
      */
     public function transformWithoutTone($input_char, $delimiter = '', $outside_ignore = true)
     {
@@ -65,7 +67,7 @@ class Pinyin
         return $char_without_tone;
     }
 
-    /*
+    /**
      * 转成汉语拼音首字母
      * param $input_char String  需要转换的汉字
      * param $delimiter  String   转换之后拼音之间分隔符
@@ -84,7 +86,7 @@ class Pinyin
     /**
      * 获取英文姓名首字母
      *
-     * @param [string] $name 英文名
+     * @param  [string] $name 英文名
      * @return string
      */
     public function getFirstCharacter($name)
@@ -100,7 +102,7 @@ class Pinyin
     /**
      * 获取中文名
      *
-     * @param [string] $name  中文名
+     * @param  [string] $name 中文名
      * @return string
      */
     public function getFirstName($name)

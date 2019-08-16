@@ -112,4 +112,29 @@ class Pinyin
         //return substr($name, 0, 2);
         return strtoupper($this->getFirstCharacter($name));
     }
+     /**
+     * 轻量级变量注入方法，可自行扩展
+     *
+     * @param [string] $html
+     * @param [array] $common
+     * @return string
+     */
+    public function inject($html, $common)
+    {
+        //如果html为空或不存在许哟替换的变量，则直接返回
+        if (empty($html) || count($common) == 0) {
+            return $html;
+        }
+        //匹配模式
+        $pattern = '/\{{([\w]+)\}}/';
+        //捕获所有的模板变量
+        preg_match_all($pattern, $html, $matches);
+        //变量替换
+        for ($i = 0; $i < count($matches[1]); $i++) {
+            if (isset($common[$matches[1][$i]])) {
+                $html = preg_replace('/\{{' . $matches[1][$i] . '\}}/', $common[$matches[1][$i]], $html);
+            }
+        }
+        return $html;
+    }
 }

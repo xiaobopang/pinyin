@@ -121,7 +121,7 @@ class Pinyin
      */
     public function inject($html, $common)
     {
-        //如果html为空或不存在许哟替换的变量，则直接返回
+        //如果html为空或不存在替换的变量，则直接返回
         if (empty($html) || count($common) == 0) {
             return $html;
         }

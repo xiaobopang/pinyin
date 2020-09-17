@@ -8,8 +8,7 @@ Copyright (c) 2016 Pangxiaobo
 EOF;
 
 $finder = PhpCsFixer\Finder::create()
-    ->exclude(['bootstrap/cache', 'resources', 'storage'])
-    ->notPath('server.php')
+    ->exclude(['data'])
     ->in(__DIR__)
 ;
 
@@ -73,9 +72,9 @@ $config = PhpCsFixer\Config::create()
         'ordered_class_elements' => true,
         'ordered_imports' => true,
         // 'php_unit_fqcn_annotation' => true,
-        // 'phpdoc_align' => true,
+        'phpdoc_align' => true,
         // 'phpdoc_annotation_without_dot' => true,
-        // 'phpdoc_indent' => true,
+        'phpdoc_indent' => true,
         // 'phpdoc_inline_tag' => true,
         // 'phpdoc_return_self_reference' => true,
         // 'phpdoc_scalar' => true,
